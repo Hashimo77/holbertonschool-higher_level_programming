@@ -1,13 +1,15 @@
 #!/usr/bin/python3
-class Rectangle:
-    """Defines a rectangle."""
+"""Defines a Rectangle class with printing symbol and instance counting."""
 
-    # Public class attributes
+
+class Rectangle:
+    """Represents a rectangle."""
+
     number_of_instances = 0
     print_symbol = "#"
 
     def __init__(self, width=0, height=0):
-        """Initialize rectangle."""
+        """Initialize a new Rectangle and increment instance counter."""
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
@@ -41,29 +43,28 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Return area of rectangle."""
+        """Return the rectangle area."""
         return self.__width * self.__height
 
     def perimeter(self):
-        """Return perimeter of rectangle."""
+        """Return the rectangle perimeter."""
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
-        """Return the rectangle with print_symbol."""
+        """Return the rectangle as a string using print_symbol."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        rect = ""
-        for _ in range(self.__height):
-            rect += str(self.print_symbol) * self.__width + "\n"
-        return rect.strip()
+        symbol = str(self.print_symbol)
+        lines = [symbol * self.__width for _ in range(self.__height)]
+        return "\n".join(lines)
 
     def __repr__(self):
-        """Return a string representation to recreate the object."""
+        """Return a string representation to recreate a new instance."""
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        """Print message and decrease instance counter when deleted."""
+        """Print a message when an instance is deleted and decrement counter."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
