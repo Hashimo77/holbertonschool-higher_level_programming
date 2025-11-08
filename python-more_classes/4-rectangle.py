@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class with area, perimeter, printing, and reproducible representation."""
+"""Defines a Rectangle class with printing, area, perimeter,
+and reproducible representation."""
 
 
 class Rectangle:
@@ -55,5 +56,5 @@ class Rectangle:
         return "\n".join("#" * self.__width for _ in range(self.__height))
 
     def __repr__(self):
-        """Return a string representation to recreate a new instance with eval()."""
-        return f"Rectangle({self.__width}, {self.__height})"
+        """Return a string representation to recreate a new instance."""
+        return ("Rectangle({}, {})".format(self.__width, self.__height))
