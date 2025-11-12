@@ -28,4 +28,4 @@ class Student:
                 if k in attrs:
                     result[k] = v
             return result
-        return self.__dict__
+        return dict(self.__dict__)
