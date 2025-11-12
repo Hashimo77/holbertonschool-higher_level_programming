@@ -17,7 +17,8 @@ class Student:
             attrs (list, optional): List of attribute names to retrieve.
 
         Returns:
-            dict: Dictionary representation of the object, filtered if attrs provided.
+            dict: Dictionary representation of the object,
+                  filtered if attrs provided.
         """
         if isinstance(attrs, list) and all(isinstance(a, str) for a in attrs):
             new_dict = {}
