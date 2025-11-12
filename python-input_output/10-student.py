@@ -14,11 +14,15 @@ class Student:
         """Retrieves a dictionary representation of a Student instance.
 
         Args:
-            attrs (list, optional): List of attribute names to retrieve. Defaults to None.
+            attrs (list, optional): List of attribute names to retrieve.
 
         Returns:
             dict: Dictionary representation of the object, filtered if attrs provided.
         """
         if isinstance(attrs, list) and all(isinstance(a, str) for a in attrs):
-            return {k: v for k, v in self.__dict__.items() if k in attrs}
+            return {
+                k: v
+                for k, v in self.__dict__.items()
+                if k in attrs
+            }
         return self.__dict__
