@@ -1,3 +1,5 @@
+USE hbtn_test_db_shows;
+
 -- 13-count_shows_by_genre.sql
 -- List all genres and the number of shows linked to each
 
