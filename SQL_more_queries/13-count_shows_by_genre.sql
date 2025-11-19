@@ -1,4 +1,3 @@
--- Count the number of shows linked to each genre
 SELECT g.name AS genre,
        COUNT(tg.tv_show_id) AS number_of_shows
 FROM genres g
