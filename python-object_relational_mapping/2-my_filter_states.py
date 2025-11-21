@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Displays states that match the argument from the database hbtn_0e_0_usa"""
+"""Lists states with a name starting with N (uppercase) from the database hbtn_0e_0_usa"""
 
 import sys
 import MySQLdb
@@ -9,7 +9,6 @@ if __name__ == "__main__":
     user = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    state_name = sys.argv[4]
 
     # Connect to MySQL server
     db = MySQLdb.connect(host="localhost",
@@ -21,8 +20,9 @@ if __name__ == "__main__":
     # Create a cursor object
     cursor = db.cursor()
 
-    # Execute SQL query using format with user input
-    query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC".format(state_name)
+    # Execute SQL query for states starting with uppercase 'N'
+    query = ("SELECT * FROM states WHERE BINARY name LIKE 'N%' "
+             "ORDER BY id ASC")
     cursor.execute(query)
 
     # Fetch all results and print
