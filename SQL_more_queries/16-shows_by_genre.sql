@@ -1,8 +1,8 @@
--- 16-shows_by_genre.sql
--- List all shows and their linked genres, show NULL if no genre
+-- Lists all shows and all genres linked (NULL if no genre)
+-- Usage: cat 16-shows_by_genre.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
 
-SELECT t.title, g.name
-FROM tv_shows t
-LEFT JOIN tv_show_genres tg ON t.id = tg.tv_show_id
-LEFT JOIN genres g ON tg.genre_id = g.id
-ORDER BY t.title ASC, g.name ASC;
+SELECT tv_shows.title, tv_genres.name
+FROM tv_shows
+LEFT JOIN tv_show_genres ON tv_shows.id = tv_show_genres.show_id
+LEFT JOIN tv_genres ON tv_genres.id = tv_show_genres.genre_id
+ORDER BY tv_shows.title ASC, tv_genres.name ASC;
