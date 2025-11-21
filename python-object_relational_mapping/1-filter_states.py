@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists states with a name starting with N from the database hbtn_0e_0_usa"""
+"""Lists states with a name starting with N (uppercase) from the database hbtn_0e_0_usa"""
 
 import sys
 import MySQLdb
@@ -20,8 +20,8 @@ if __name__ == "__main__":
     # Create a cursor object
     cursor = db.cursor()
 
-    # Execute SQL query for states starting with 'N'
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    # Execute SQL query for states starting with uppercase 'N'
+    cursor.execute("SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC")
 
     # Fetch all results and print
     rows = cursor.fetchall()
