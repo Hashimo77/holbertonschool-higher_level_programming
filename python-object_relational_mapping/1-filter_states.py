@@ -1,34 +1,40 @@
 #!/usr/bin/python3
-"""Lists states with a name starting with N (uppercase) from the database hbtn_0e_0_usa"""
-
+"""
+Script that lists all states starting with 'N' from the database.
+Usage: ./1-filter_states.py <username> <password> <database>
+"""
 import sys
 import MySQLdb
 
-if __name__ == "__main__":
-    # Get arguments
-    user = sys.argv[1]
+
+def main():
+    """Main function"""
+    # Arguments
+    username = sys.argv[1]
     password = sys.argv[2]
-    db_name = sys.argv[3]
+    database = sys.argv[3]
 
-    # Connect to MySQL server
-    db = MySQLdb.connect(host="localhost",
-                         port=3306,
-                         user=user,
-                         passwd=password,
-                         db=db_name)
-
-    # Create a cursor object
+    # Connect to MySQL
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=username,
+        passwd=password,
+        db=database
+    )
     cursor = db.cursor()
 
-    # Execute SQL query for states starting with uppercase 'N'
-    query = "SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC"
-    cursor.execute(query)
+    # Execute query
+    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
 
-    # Fetch all results and print
-    rows = cursor.fetchall()
-    for row in rows:
+    # Fetch and display results
+    for row in cursor.fetchall():
         print(row)
 
-    # Close cursor and connection
+    # Close connections
     cursor.close()
     db.close()
+
+
+if __name__ == "__main__":
+    main()
