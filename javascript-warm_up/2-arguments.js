@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const process = require('process');
 
 const argsCount = process.argv.length;

@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const process = require('process');
 
 const size = parseInt(process.argv[2]);

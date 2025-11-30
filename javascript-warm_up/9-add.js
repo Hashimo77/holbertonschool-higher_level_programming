@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const process = require('process');
 
 function add(a, b) {
